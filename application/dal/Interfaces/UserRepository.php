@@ -57,4 +57,13 @@ interface UserRepository
      * @return mixed
      */
     public function syncUserProducts($userID, $productIds);
+
+    /***
+     * remove user product
+     *
+     * @param $userID
+     * @param $productID
+     * @return mixed
+     */
+    public function removeUserProduct($userID, $productID);
 }

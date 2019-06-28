@@ -45,11 +45,18 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
                 'uses' => 'UserController@getUserProducts'
             ]
         );
-        //add user products
+        //sync user products
         $router->post(
             '/products',
             [
                 'uses' => 'UserController@syncUserProducts'
+            ]
+        );
+        //delete user product
+        $router->delete(
+            '/products/{sku}',
+            [
+                'uses' => 'UserController@removeUserProduct'
             ]
         );
     });

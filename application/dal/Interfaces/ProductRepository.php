@@ -19,4 +19,13 @@ interface ProductRepository
      * @return array
      */
     public function getAllProducts() : array;
+
+    /***
+     * get product by sku
+     *
+     * @param string sku
+     *
+     * @return mixed
+     */
+    public function getProductBySku(string $sku);
 }

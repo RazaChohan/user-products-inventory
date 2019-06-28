@@ -102,4 +102,15 @@ class UserRepositoryImpl implements UserRepository {
     {
         $this->getUserByID($userID)->products()->sync($productIds);
     }
+    /***
+     * remove user product
+     *
+     * @param $userID
+     * @param $productID
+     * @return mixed
+     */
+    public function removeUserProduct($userID, $productID)
+    {
+        $this->getUserByID($userID)->products()->detach($productID);
+    }
 }

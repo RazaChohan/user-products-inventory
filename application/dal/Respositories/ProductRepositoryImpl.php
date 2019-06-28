@@ -40,4 +40,15 @@ class ProductRepositoryImpl implements ProductRepository
     {
         return $this->makeEntity()->get()->toArray();
     }
+
+    /***
+     * get product by sku
+     *
+     * @param string $sku
+     * @return mixed
+     */
+    public function getProductBySku(string $sku)
+    {
+        return $this->makeEntity()->where('sku', '=', $sku)->first();
+    }
 }
