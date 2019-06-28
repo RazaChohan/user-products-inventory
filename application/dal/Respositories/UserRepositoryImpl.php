@@ -78,4 +78,14 @@ class UserRepositoryImpl implements UserRepository {
     {
         return $this->eloquentEntity->where('id', '=', $id)->first();
     }
+    /***
+     * get user products
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getUserProducts($id)
+    {
+        return $this->makeEntity()->with('products')->where('id', '=', $id)->get();
+    }
 }

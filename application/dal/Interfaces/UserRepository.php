@@ -40,4 +40,12 @@ interface UserRepository
      * @return mixed
      */
     public function getUserByID($id);
+
+    /***
+     * get user products
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getUserProducts($id);
 }

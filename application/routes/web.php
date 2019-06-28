@@ -31,11 +31,18 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
 
     //User Controller group
     $router->group(['prefix' => 'user'], function () use ($router) {
-        //Authenticate user
+        //get user
         $router->get(
             '/',
             [
-                'uses' => 'UserController@user'
+                'uses' => 'UserController@getUser'
+            ]
+        );
+        //get user products
+        $router->get(
+            '/products',
+            [
+                'uses' => 'UserController@getUserProducts'
             ]
         );
     });
