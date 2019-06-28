@@ -131,6 +131,12 @@ class UserController extends Controller
         // send response
         return response()->json($response, $responseCode);
     }
+
+    /***
+     * User recommendation
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function userRecommendation()
     {
         $response = ['message' => 'No recommendation found!'];
