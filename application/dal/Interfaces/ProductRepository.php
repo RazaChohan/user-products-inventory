@@ -28,4 +28,12 @@ interface ProductRepository
      * @return mixed
      */
     public function getProductBySku(string $sku);
+
+    /***
+     * Get recommended product
+     *
+     * @param int $userID
+     * @return mixed
+     */
+    public function getRecommendedProduct(int $userID);
 }

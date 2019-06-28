@@ -131,4 +131,21 @@ class UserController extends Controller
         // send response
         return response()->json($response, $responseCode);
     }
+    public function userRecommendation()
+    {
+        $response = ['message' => 'No recommendation found!'];
+        $responseCode = Response::HTTP_NOT_FOUND;
+        try {
+            $recommendedProduct = $this->productRepository->getRecommendedProduct($this->request->auth->id);
+            if (!is_null($recommendedProduct)) {
+                $responseCode = Response::HTTP_OK;
+                $response = $recommendedProduct;
+            }
+        } catch (Exception $exception) {
+            $responseCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+            parent::log($exception, UserController::class);
+        }
+        // send response
+        return response()->json($response, $responseCode);
+    }
 }

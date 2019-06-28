@@ -59,6 +59,13 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
                 'uses' => 'UserController@removeUserProduct'
             ]
         );
+        //user recommendation
+        $router->get(
+            '/recommendation',
+            [
+                'uses' => 'UserController@userRecommendation'
+            ]
+        );
     });
 
     //Product Controller group

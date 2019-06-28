@@ -51,4 +51,16 @@ class ProductRepositoryImpl implements ProductRepository
     {
         return $this->makeEntity()->where('sku', '=', $sku)->first();
     }
+    /***
+     * Get recommended product
+     *
+     * @param int $userID
+     * @return mixed
+     */
+    public function getRecommendedProduct(int $userID)
+    {
+        return $this->makeEntity()->with('users')->whereDoesntHave('users', function($query) use ($userID) {
+                         $query->where('user_id', '=', $userID);
+               })->first(['name', 'sku']);
+    }
 }

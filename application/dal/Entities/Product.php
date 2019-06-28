@@ -17,7 +17,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $hidden = ['pivot'];
+    protected $hidden = ['pivot', 'users'];
 
     /***
      * User relationship
@@ -26,6 +26,6 @@ class Product extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_products');
     }
 }
