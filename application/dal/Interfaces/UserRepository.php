@@ -32,4 +32,12 @@ interface UserRepository
      * @return mixed
      */
     public function addUserProducts($data);
+
+    /***
+     * Get user by id
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getUserByID($id);
 }

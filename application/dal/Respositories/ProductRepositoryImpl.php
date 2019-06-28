@@ -30,4 +30,14 @@ class ProductRepositoryImpl implements ProductRepository
         $newProduct->save();
         return $newProduct->id;
     }
+
+    /***
+     * Get all products
+     *
+     * @return array
+     */
+    public function getAllProducts(): array
+    {
+        return $this->makeEntity()->get()->toArray();
+    }
 }

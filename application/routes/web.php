@@ -19,12 +19,38 @@ $router->get('/', function () use ($router) {
 $router->group(['prefix' => 'auth'], function () use ($router) {
     //Authenticate user
     $router->post(
-        '/login',
+        '/',
         [
             'uses' => 'AuthController@authenticate'
         ]
     );
-
 });
+
+//Auth Middleware Group
+$router->group(['middleware' => 'auth'], function () use ($router) {
+
+    //User Controller group
+    $router->group(['prefix' => 'user'], function () use ($router) {
+        //Authenticate user
+        $router->get(
+            '/',
+            [
+                'uses' => 'UserController@user'
+            ]
+        );
+    });
+
+    //Product Controller group
+    $router->group(['prefix' => 'product'], function () use ($router) {
+        //Authenticate user
+        $router->get(
+            '/',
+            [
+                'uses' => 'ProductController@list'
+            ]
+        );
+    });
+});
+
 
 

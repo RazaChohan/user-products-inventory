@@ -12,4 +12,11 @@ interface ProductRepository
      * @return mixed
      */
     public function insertProduct(string $name, string $sku) : int;
+
+    /***
+     * Get all products
+     *
+     * @return array
+     */
+    public function getAllProducts() : array;
 }

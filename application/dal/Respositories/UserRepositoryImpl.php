@@ -68,4 +68,14 @@ class UserRepositoryImpl implements UserRepository {
         //method of eloquent
         DB::table('user_products')->insert($data);
     }
+    /***
+     * Get user by id
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getUserByID($id)
+    {
+        return $this->eloquentEntity->where('id', '=', $id)->first();
+    }
 }
