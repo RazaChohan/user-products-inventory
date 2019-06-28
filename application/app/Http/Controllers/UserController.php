@@ -62,11 +62,12 @@ class UserController extends Controller
      */
     public function getUserProducts()
     {
-        $userProducts = 'User products not found';
+        $userProducts = ['message' => 'User products not found'];
         $responseCode = null;
         try {
             $userProducts = $this->userRepository->getUserProducts($this->request->auth->id);
-            $responseCode = is_null($userProducts) ? Response::HTTP_NOT_FOUND : Response::HTTP_OK;
+            $userProducts = !empty($userProducts->products) ? $userProducts->products : [];
+            $responseCode = !empty($userProducts) ? Response::HTTP_OK : Response::HTTP_NOT_FOUND;
         } catch (Exception $exception) {
             $responseCode = Response::HTTP_INTERNAL_SERVER_ERROR;
             parent::log($exception, UserController::class);
