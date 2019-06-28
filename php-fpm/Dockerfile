@@ -20,7 +20,8 @@ RUN apk add --update \
     curl \
     php7-curl \
     php7-json \
-    php7-dom
+    php7-dom \
+    php7-xmlwriter
 
 RUN rm -rf /var/cache/apk/* && rm -rf /tmp/*
 
