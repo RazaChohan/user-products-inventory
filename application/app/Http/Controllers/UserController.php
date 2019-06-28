@@ -57,7 +57,7 @@ class UserController extends Controller
 
     /***
      * Get user products
-     * 
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function getUserProducts()
@@ -73,5 +73,27 @@ class UserController extends Controller
         }
         // send response
         return response()->json($userProducts, $responseCode);
+    }
+
+    /***
+     * Sync user products
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function syncUserProducts()
+    {
+        $response = ['message' => 'Sync products failed'];
+        $responseCode = null;
+        try {
+            $productIds = $this->request->get('product_ids');
+            $this->userRepository->syncUserProducts($this->request->auth->id, $productIds);
+            $responseCode = Response::HTTP_OK;
+            $response['message'] = 'Products synched successfully!';
+        } catch (Exception $exception) {
+            $responseCode = Response::HTTP_INTERNAL_SERVER_ERROR;
+            parent::log($exception, UserController::class);
+        }
+        // send response
+        return response()->json($response, $responseCode);
     }
 }

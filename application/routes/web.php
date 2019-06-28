@@ -45,6 +45,13 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
                 'uses' => 'UserController@getUserProducts'
             ]
         );
+        //add user products
+        $router->post(
+            '/products',
+            [
+                'uses' => 'UserController@syncUserProducts'
+            ]
+        );
     });
 
     //Product Controller group

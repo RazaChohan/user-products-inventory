@@ -88,4 +88,15 @@ class UserRepositoryImpl implements UserRepository {
     {
         return $this->makeEntity()->with('products')->where('id', '=', $id)->get();
     }
+    /***
+     * sync user products
+     *
+     * @param $userID
+     * @param $productIds
+     * @return mixed
+     */
+    public function syncUserProducts($userID, $productIds)
+    {
+        $this->getUserByID($userID)->products()->sync($productIds);
+    }
 }

@@ -48,4 +48,13 @@ interface UserRepository
      * @return mixed
      */
     public function getUserProducts($id);
+
+    /***
+     * sync user products
+     *
+     * @param $userID
+     * @param $productIds
+     * @return mixed
+     */
+    public function syncUserProducts($userID, $productIds);
 }
