@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Dal\Interfaces\UserInterface;
+use Dal\Interfaces\UserRepository;
 use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +20,7 @@ class AuthController extends Controller
     /***
      * User Repository
      *
-     * @var UserInterface
+     * @var UserRepository
      */
     private $userRepository;
 
@@ -28,10 +28,10 @@ class AuthController extends Controller
      * Create a new controller instance.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param UserInterface $userRepository
+     * @param UserRepository $userRepository
      * @return void
      */
-    public function __construct(Request $request, UserInterface $userRepository)
+    public function __construct(Request $request, UserRepository $userRepository)
     {
         $this->request = $request;
         $this->userRepository = $userRepository;

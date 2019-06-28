@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Providers;
-use Dal\Interfaces\UserInterface;
-use Dal\Repositories\UserRepository;
+
+use Dal\Interfaces\ProductRepository;
+use Dal\Interfaces\UserRepository;
+use Dal\Repositories\ProductRepositoryImpl;
+use Dal\Repositories\UserRepositoryImpl;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -16,6 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         //Bind all interfaces with repositories
-        $this->app->bind(UserInterface::class, UserRepository::class);
+        $this->app->bind(UserRepository::class, UserRepositoryImpl::class);
+        $this->app->bind(ProductRepository::class, ProductRepositoryImpl::class);
     }
 }
