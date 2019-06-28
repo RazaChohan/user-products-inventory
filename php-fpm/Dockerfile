@@ -18,7 +18,8 @@ RUN apk add --update \
     php7-session \
     make \
     curl \
-    php7-curl
+    php7-curl \
+    php7-json
 
 RUN rm -rf /var/cache/apk/* && rm -rf /tmp/*
 

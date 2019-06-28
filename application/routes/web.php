@@ -14,3 +14,17 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+//Auth Controller routes
+$router->group(['prefix' => 'auth'], function () use ($router) {
+    //Authenticate user
+    $router->post(
+        '/login',
+        [
+            'uses' => 'AuthController@authenticate'
+        ]
+    );
+
+});
+
+
