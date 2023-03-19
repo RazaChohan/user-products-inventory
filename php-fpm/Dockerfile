@@ -29,11 +29,10 @@ RUN set -eux; \
             libonig-dev; \
     rm -rf /var/lib/apt/lists/*
 RUN set -eux; \
-    # Install the PHP pdo_mysql extention
+    # Install the PHP pdo_mysql extension
     docker-php-ext-install pdo_mysql; \
-    # Install the PHP pdo_pgsql extention
+    # Install the PHP pdo_pgsql extension
     docker-php-ext-install pdo_pgsql; \
-
     docker-php-ext-configure zip; \
      docker-php-ext-install zip; \
     # Install the PHP gd library
@@ -56,7 +55,7 @@ ADD application.ini /etc/php8/cli/conf.d/
 
 ADD application.pool.conf /etc/php8/php-fpm.d/
 
-CMD ["php-fpm8", "-F"]
+CMD ["php-fpm", "-F"]
 
 WORKDIR /var/www/application
 EXPOSE 9000
